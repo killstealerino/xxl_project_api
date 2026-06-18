@@ -8,4 +8,4 @@ def load_events():
 
 def save_events(events):
     with open(events_path, "w", encoding="utf-8") as reading_file:
-        json.dump(events, file, indent=4, ensure_ascii=False)
+        json.dump(events, reading_file, indent=4, ensure_ascii=False)
