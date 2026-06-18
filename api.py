@@ -3,5 +3,5 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/")
-def root():
-    return {"message": "API is working"}
+def add_event(event_data: EventCreate):
+    return create_event(event_data)
