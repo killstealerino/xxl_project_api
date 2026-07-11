@@ -23,3 +23,22 @@ def create_event(event_data: EventCreate):
     save_events(events)
 
     return event
+
+def get_all_events():
+    return load_events()
+
+def delete_event_service(event_id: int):
+    events = load_events()
+
+    new_events = []
+
+    for event in events:
+        if event["id"] != event_id:
+            new_events.append(event)
+
+    if len(new_events) == len(events):
+        return False
+
+    save_events(new_events)
+
+    return True
