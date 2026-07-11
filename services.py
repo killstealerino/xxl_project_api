@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from models import EventModel, EventCreate
+from models import EventModel, EventCreate, EventUpdate
 from storage import load_events, save_events
 
 def create_event(event_data: EventCreate):
@@ -40,5 +40,23 @@ def delete_event_service(event_id: int):
         return False
 
     save_events(new_events)
+
+    return True
+
+def patch_event_service(event_id: int, event_data: EventUpdate):
+    events = load_events()
+
+    for event in events: 
+        if event["id"] == event_id:
+            
+            if event_data.text is not None:
+                event["text"] = event_data.text
+
+            if event_data.impact is not None:
+                event["impact"] = event_data.impact
+
+            event["updated_at"] = datetime.now().isoformat()
+
+    save_events(events)
 
     return True

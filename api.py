@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from models import EventCreate
-from services import create_event, get_all_events, delete_event_service
+from models import EventCreate, EventUpdate
+from services import create_event, get_all_events, delete_event_service, patch_event_service
 
 app = FastAPI()
 
@@ -15,3 +15,7 @@ def get_events():
 @app.delete("/events/{event_id}")
 def delete_event(event_id: int):
     return delete_event_service(event_id)
+
+@app.patch("/events/{event_id}")
+def patch_event_endpoint(event_id: int, event_data: EventUpdate):
+    return patch_event_service(event_id, event_data)

@@ -10,3 +10,8 @@ class EventModel(BaseModel):
 class EventCreate(BaseModel):
     text: str
     impact: int
+
+class EventUpdate(BaseModel):
+    text: str
+    impact: int
+    updated_at: datetime
