@@ -26,7 +26,7 @@ def create_event(event_data: EventCreate):
 def get_all_events():
     return load_events()
 
-def delete_event_service(event_id: int):
+def delete_event(event_id: int):
     events = load_events()
 
     new_events = []
@@ -42,7 +42,7 @@ def delete_event_service(event_id: int):
 
     return True
 
-def patch_event_service(event_id: int, event_data: EventUpdate):
+def patch_event(event_id: int, event_data: EventUpdate):
     events = load_events()
 
     for event in events: 
@@ -56,11 +56,13 @@ def patch_event_service(event_id: int, event_data: EventUpdate):
 
             event["updated_at"] = datetime.now().isoformat()
 
-    save_events(events)
+            save_events(events)
 
-    return True
+            return True
 
-def sum_events_impact_service():
+    return False
+
+def sum_events_impact():
     events = load_events()
 
     sum_impact = 0
