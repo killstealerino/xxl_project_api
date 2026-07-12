@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from models import EventModel, EventCreate, EventUpdate
 from storage import load_events, save_events
 
@@ -60,3 +59,13 @@ def patch_event_service(event_id: int, event_data: EventUpdate):
     save_events(events)
 
     return True
+
+def sum_events_impact_service():
+    events = load_events()
+
+    sum_impact = 0
+
+    for event in events:
+        sum_impact += event["impact"]
+
+    return sum_impact
