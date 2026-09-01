@@ -1,2 +1,2 @@
-# xxl_project_api
-API that provides job of ㄨㄖㄨㄖㄥ site.
+# first_site_project_api
+API that provides job of my first site.
